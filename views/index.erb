@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Lipsum Stuff</title>
+  <style>
+      .num_input {
+          width:5em;
+      }
+  </style>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+<div class="navbar navbar-static-top navbar-default">
+  <div class="navbar-brand">
+    <%=(@post ? @article_name : 'Wiki')%>-Ipsum
+  </div>
+  <div class="navbar-text">
+    A Wiki-Ipsum generator created by Charlie "Rock" Quigley
+  </div>
+  <ul class="nav navbar-nav">
+    <li><a href="">GitHub</a></li>
+    <li><a href="">Other Ipsums</a></li>
+  </ul>
+</div>
+<div class="jumbotron">
+  <h1>
+    The <%=(@post ? @article_name : 'Wiki')%>-Ipsum Generator
+  </h1>
+  <% if @post %><a href="#generate" class="btn btn-primary">Generate More Filler Text</a><%end%>
+</div>
+<%if @post%>
+    <div class="container">
+      <p><%=@content%></p>
+    </div>
+<%end%>
+<div class="container">
+  <form class="form-horizontal" action="/" method="POST" id="generate">
+    <fieldset>
+      <label class="control-label" for="topic">
+        Topic (Wiki Article):
+      </label><br />
+        <input type="text" name="topic" id="topic" /><br />
+      <label class="control-label" for="paras">
+        Amount of paragraphs:
+      </label><br />
+        <input id="paras" type="number" name="numparas" class="num_input"><br />
+      <label class="control-label" for="sent">
+        Sentences Per Paragraph
+      </label><br />
+      <input type="number" name="sentences_min" class="num_input"> to <input type="number" name="sentences_max" class="num_input"><br /><br />
+      <input type="submit" class="btn btn-primary" /><div>&nbsp</div>
+    </fieldset>
+  </form>
+</div>
+
+</body>
+</html>
